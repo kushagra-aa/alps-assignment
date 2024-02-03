@@ -2,15 +2,17 @@
 
 ## Setup
 
-- [] git
+- [X] git
 - [X] Node-TS
-- [] Vite-React
+- [X] Vite-React
 
 ## Development
 
 ### BackEnd
 
-- []
+- [] Integrate Zoho
+- [] Make Endpoint(s)
+- [] Add Logic
 
 ### FrontEnd
 
