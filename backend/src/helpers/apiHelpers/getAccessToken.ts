@@ -1,4 +1,4 @@
-import API from "../lib/api.js";
+import API from "../../lib/api.js";
 
 type AccessTokenResponseType = {
   access_token: string;
