@@ -38,12 +38,21 @@ const apiRequest = (
   // Validate method, url, and required fields based on chosen HTTP method
   switch (method) {
     case "GET":
-      validateRequiredFields(["url","headers"], {url,headers});
+      validateRequiredFields(["url", "headers"], { url, headers });
       break;
     case "POST":
     case "PATCH":
+      validateRequiredFields(["url", "request", "headers"], {
+        url,
+        request,
+        headers,
+      });
+      break;
     case "DELETE":
-      validateRequiredFields(["url", "request","headers"], {url, request,headers});
+      validateRequiredFields(["url", "headers"], {
+        url,
+        headers,
+      });
       break;
     default:
       throw new Error(`Invalid HTTP method: ${method}`);
@@ -88,8 +97,8 @@ const post = (url: string, request: object, headers: object = {}) =>
 const patch = (url: string, request: object, headers: object) =>
   apiRequest("PATCH", url, request, headers);
 // Function to execute HTTP DELETE request
-const del = (url: string, request: object, headers: object) =>
-  apiRequest("DELETE", url, request, headers);
+const del = (url: string, headers: object) =>
+  apiRequest("DELETE", url, {}, headers);
 
 // Expose your methods to other services or actions
 const API = {

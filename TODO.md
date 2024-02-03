@@ -12,9 +12,9 @@
 
 - [] Integrate Zoho
   - [X] Get
-  - [] Add
-  - [] Edit
-  - [] Delete
+  - [X] Add
+  - [X] Edit
+  - [X] Delete
 - [] Make Endpoint(s)
   - [] Refresh Data From Zoho
     - [] Process The Data
