@@ -5,8 +5,8 @@
   "main": "dist/index.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon .",
-    "start": "ts-node .",
+    "dev": "node --watch --loader=ts-node/esm ./src/index.ts",
+    "start": "ts-node",
     "build": "tsc"
   },
   "repository": {
@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/kushagra-aa/alps-assignment#readme",
   "dependencies": {
+    "axios": "^1.6.7",
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.18.1"
