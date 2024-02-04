@@ -17,17 +17,19 @@ Built with 🤍 For You!
 
 ## Screenshots
 
-### Dashboard Section
+### Dashboard Page
 
-![image](https://github.com/kushagra-aa/project_aranya/assets/68841296/68d9590f-8565-42ef-b88d-268319e5d76a)
+![image](https://github.com/kushagra-aa/alps-assignment/assets/68841296/c28c0e2e-f8a2-4896-9756-1aac621bb2be)
+
 
 ### Add Modal
 
-![image](https://github.com/kushagra-aa/project_aranya/assets/68841296/09ed174b-8b96-4a27-8c0d-80298c483b65)
+![image](https://github.com/kushagra-aa/alps-assignment/assets/68841296/7505525e-b4b2-4707-b191-cd96cfa7e526)
+
 
 ### Edit Modal
 
-![image](https://github.com/kushagra-aa/project_aranya/assets/68841296/3d04bfbf-5429-4fd0-af7f-cddba881dd48)
+![image](https://github.com/kushagra-aa/alps-assignment/assets/68841296/21cd3519-bca0-478a-a814-0ec0f4f03ca7)
 
 ## Run Locally
 
