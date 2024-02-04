@@ -36,9 +36,9 @@
 
 - [] Make UI
   - [X] Table
-  - [] Modal(s)
-    - [] Add
-    - [] Edit
+  - [X] Modal(s)
+    - [X] Add
+    - [X] Edit
     - [X] Delete Confirm
 - [] From Handlers
   - [] Add

@@ -1,11 +1,12 @@
 import "./style.css";
 import { AddIcon } from "../../components/Icons";
-import Table from "../../components/table/table";
+import Table from "../../components/table/Table";
 import { LeaveRequestType } from "../../types/LeaveRequest";
 import ConfirmModal from "../../components/modals/ConfirmModal";
 import { useState } from "react";
 import AddModal from "../../components/modals/AddModal";
 import { OmitAType } from "../../types/utilityTypes";
+import EditModal from "../../components/modals/EditModal";
 
 const data: LeaveRequestType[] = [
   {
@@ -98,6 +99,7 @@ export type ModalsEnum = "confirm" | "add" | "edit" | "none";
 
 function Dashboard() {
   const [modalOpen, setModalOpen] = useState<ModalsEnum>("none");
+  const [selectedRequest, setSelectedRequest] = useState<LeaveRequestType>();
 
   const handleFormSubmit = async (
     formData: OmitAType<LeaveRequestType, "ID">
@@ -107,6 +109,9 @@ function Dashboard() {
 
   const handleModalOpen = (modalName: ModalsEnum) => {
     setModalOpen(modalName);
+  };
+  const handleSelectRequest = (selected: LeaveRequestType) => {
+    setSelectedRequest(selected);
   };
   const handleModalClose = () => {
     setModalOpen("none");
@@ -121,7 +126,11 @@ function Dashboard() {
         />
       ) : null}
       {modalOpen === "edit" ? (
-        <ConfirmModal handleModalClose={handleModalClose} />
+        <EditModal
+          selectedRequest={selectedRequest}
+          handleFormSubmit={handleFormSubmit}
+          handleModalClose={handleModalClose}
+        />
       ) : null}
       {modalOpen === "confirm" ? (
         <ConfirmModal handleModalClose={handleModalClose} />
@@ -133,7 +142,11 @@ function Dashboard() {
         </button>
       </div>
       <div className="table_container">
-        <Table data={data} handleModalOpen={handleModalOpen} />
+        <Table
+          setSelectedRequest={handleSelectRequest}
+          data={data}
+          handleModalOpen={handleModalOpen}
+        />
       </div>
     </main>
   );

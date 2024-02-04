@@ -6,10 +6,17 @@ import { ModalsEnum } from "../../pages/dashboard/page";
 function Table({
   data,
   handleModalOpen,
+  setSelectedRequest,
 }: {
   data: LeaveRequestType[];
+  setSelectedRequest: (selected: LeaveRequestType) => void;
   handleModalOpen: (modalName: ModalsEnum) => void;
 }) {
+  const handleEditClick = (s: LeaveRequestType) => {
+    setSelectedRequest(s);
+    handleModalOpen("edit");
+  };
+
   return (
     <table>
       <thead>
@@ -68,7 +75,7 @@ function Table({
             <td className="med">{d.Gross_Premium}</td>
             <td className="big">{d.Reason}</td>
             <td className="small">
-              <button onClick={() => handleModalOpen("edit")}>
+              <button onClick={() => handleEditClick(d)}>
                 <EditIcon />
               </button>
             </td>

@@ -144,4 +144,19 @@
       }
     }
   }
+
+  &.edit_modal {
+    & > form {
+      & > label {
+        grid-template-columns: repeat(3, 1fr);
+
+        &:first-of-type {
+          & > :is(input, select) {
+            grid-column: 2/4;
+            border: none;
+          }
+        }
+      }
+    }
+  }
 }
