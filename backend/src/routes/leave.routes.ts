@@ -6,15 +6,16 @@ import {
   editLeaveApplication,
   removeLeaveApplication,
 } from "../controllers/leave.controller.js";
+import zohoAuthMiddleware from "../middleware/zohoAuth.middleware.js";
 
 const router = Router();
 
-router.route("/refresh").get(refreshLeaveApplications);
+router.route("/refresh").get(zohoAuthMiddleware, refreshLeaveApplications);
 router
   .route("/")
   .get(getLeaveApplications)
-  .post(addNewLeaveApplication)
-  .patch(editLeaveApplication)
-  .delete(removeLeaveApplication);
+  .post(zohoAuthMiddleware, addNewLeaveApplication)
+  .patch(zohoAuthMiddleware, editLeaveApplication)
+  .delete(zohoAuthMiddleware, removeLeaveApplication);
 
 export default router;
