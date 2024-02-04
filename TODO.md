@@ -22,8 +22,6 @@
   - [X] Middlewares
 - [X] Make Endpoint(s)
   - [X] Refresh Data From Zoho
-    - [] Process The Data
-    - [] Cluster The Data
     - [X] Save in json
   - [X] Get
   - [X] Add: Add-> Refresh Data From Zoho
@@ -36,4 +34,29 @@
 
 ### FrontEnd
 
-- []
+- [] Make UI
+  - [] Table
+  - [] Modal(s)
+    - [] Add
+    - [] Edit
+    - [] Delete Confirm
+- [] From Handlers
+  - [] Add
+  - [] Edit
+- [] API Handlers
+  - [] Get
+  - [] Add
+  - [] Edit
+  - [] Delete
+
+### Additional
+
+- [] Data Validation in Add-Edit API
+  - [] Undefined
+  - [] Insurance_Type
+  - [] Department
+  - [] Type_of_Leave
+  - [] Insurance_Company
+- [] Process The Data
+  - [] undefined fields = "Not found"
+- [] Cluster The Data
