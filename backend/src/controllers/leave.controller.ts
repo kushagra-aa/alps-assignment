@@ -9,6 +9,7 @@ import editLeaveRequests, {
   EditRequestBodyType,
 } from "../helpers/apiHelpers/leaveRequests/editLeaveRequest.js";
 import deleteLeaveRequests from "../helpers/apiHelpers/leaveRequests/deleteLeaveRequest.js";
+import { formatDate } from "../helpers/dateTime.js";
 
 const refreshLeaveApplications = asyncHandler(async (req, res) => {
   let zohoAccessToken = await readJSONFile("./zohoToken.json");
@@ -37,18 +38,19 @@ const addNewLeaveApplication = asyncHandler(async (req, res) => {
   let zohoAccessToken = await readJSONFile("./zohoToken.json");
 
   const bodyData: AddRequestBodyType = {
-    Car_Number: req.body.carNumber,
-    Department: req.body.department,
-    Employee_Id: req.body.employeeId,
-    End_Date: req.body.endDate,
-    Gross_Premium: req.body.grossPremium,
-    Insurance_Company: req.body.insuranceCompany,
-    Insurance_Type: req.body.insuranceType,
-    PREMIUM: req.body.premium,
-    Reason: req.body.reason,
-    Start_Date: req.body.startDate,
-    Type_of_Leave: req.body.typeOfLeave,
+    Car_Number: req.body.Car_Number,
+    Department: req.body.Department,
+    Employee_Id: req.body.Employee_Id,
+    End_Date: formatDate(req.body.End_Date),
+    Gross_Premium: req.body.Gross_Premium,
+    Insurance_Company: req.body.Insurance_Company,
+    Insurance_Type: req.body.Insurance_Type,
+    PREMIUM: req.body.PREMIUM,
+    Reason: req.body.Reason,
+    Start_Date: formatDate(req.body.Start_Date),
+    Type_of_Leave: req.body.Type_of_Leave,
   };
+  console.log("bodyData :>> ", bodyData);
   const resp = await addLeaveRequests(zohoAccessToken.token, bodyData);
   return res
     .status(200)
@@ -59,17 +61,17 @@ const editLeaveApplication = asyncHandler(async (req, res) => {
   let zohoAccessToken = await readJSONFile("./zohoToken.json");
 
   const bodyData: EditRequestBodyType = {
-    Car_Number: req.body.carNumber,
-    Department: req.body.department,
-    Employee_Id: req.body.employeeId,
-    End_Date: req.body.endDate,
-    Gross_Premium: req.body.grossPremium,
-    Insurance_Company: req.body.insuranceCompany,
-    Insurance_Type: req.body.insuranceType,
-    PREMIUM: req.body.premium,
-    Reason: req.body.reason,
-    Start_Date: req.body.startDate,
-    Type_of_Leave: req.body.typeOfLeave,
+    Car_Number: req.body.Car_Number,
+    Department: req.body.Department,
+    Employee_Id: req.body.Employee_Id,
+    End_Date: formatDate(req.body.End_Date),
+    Gross_Premium: req.body.Gross_Premium,
+    Insurance_Company: req.body.Insurance_Company,
+    Insurance_Type: req.body.Insurance_Type,
+    PREMIUM: req.body.PREMIUM,
+    Reason: req.body.Reason,
+    Start_Date: formatDate(req.body.Start_Date),
+    Type_of_Leave: req.body.Type_of_Leave,
   };
   const resp = await editLeaveRequests(zohoAccessToken.token, id, bodyData);
   return res
@@ -82,7 +84,7 @@ const removeLeaveApplication = asyncHandler(async (req, res) => {
   const resp = await deleteLeaveRequests(zohoAccessToken.token, id);
   return res
     .status(200)
-    .json(new ApiResponse(200, resp, "Leave Applications found successfully"));
+    .json(new ApiResponse(200, resp, "Leave Application Removed successfully"));
 });
 
 export {

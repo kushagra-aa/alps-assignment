@@ -82,7 +82,7 @@ function AddModal({
       Reason: formRef.current.Reason.value,
     };
     handleFormSubmit(formData);
-    // handleModalClose();
+    handleModalClose();
   };
 
   return (

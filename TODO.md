@@ -43,11 +43,11 @@
 - [X] From Handlers
   - [X] Add
   - [X] Edit
-- [] API Handlers
+- [X] API Handlers
   - [X] Get
-  - [] Add
-  - [] Edit
-  - [] Delete
+  - [X] Add
+  - [X] Edit
+  - [X] Delete
 
 ### Additional
 

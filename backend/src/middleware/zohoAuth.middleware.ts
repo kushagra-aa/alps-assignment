@@ -13,7 +13,7 @@ const zohoAuthMiddleware = async (_, __, next: NextFunction) => {
     const tokenAge = now.getTime() - then.getTime();
     console.log("tokenAge :>> ", tokenAge);
     if (
-      tokenAge >= 3600000 ||
+      tokenAge <= -3600000 ||
       !zohoAccessToken?.token ||
       zohoAccessToken.token === ""
     ) {

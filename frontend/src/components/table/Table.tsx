@@ -16,6 +16,10 @@ function Table({
     setSelectedRequest(s);
     handleModalOpen("edit");
   };
+  const handleDeleteClick = (s: LeaveRequestType) => {
+    setSelectedRequest(s);
+    handleModalOpen("confirm");
+  };
 
   return (
     <table>
@@ -80,7 +84,7 @@ function Table({
               </button>
             </td>
             <td className="small">
-              <button onClick={() => handleModalOpen("confirm")}>
+              <button onClick={() => handleDeleteClick(d)}>
                 <DeleteIcon />
               </button>
             </td>

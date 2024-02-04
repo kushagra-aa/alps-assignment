@@ -33,7 +33,10 @@ function EditModal({
 }: {
   selectedRequest: LeaveRequestType | undefined;
   handleModalClose: () => void;
-  handleFormSubmit(formData: OmitAType<LeaveRequestType, "ID">): void;
+  handleFormSubmit(
+    formData: OmitAType<LeaveRequestType, "ID">,
+    id: string
+  ): void;
 }) {
   const formRef = useRef<HTMLFormElement>(null!);
 
@@ -67,7 +70,7 @@ function EditModal({
   };
 
   const handleActionClick = (): void => {
-    if (!validateForm(formRef.current)) {
+    if (!validateForm(formRef.current) || !selectedRequest) {
       return;
     }
     const formData: OmitAType<LeaveRequestType, "ID"> = {
@@ -83,8 +86,8 @@ function EditModal({
       Gross_Premium: formRef.current.Gross_Premium.value,
       Reason: formRef.current.Reason.value,
     };
-    handleFormSubmit(formData);
-    // handleModalClose();
+    handleFormSubmit(formData, selectedRequest.ID);
+    handleModalClose();
   };
 
   if (!selectedRequest)

@@ -9,26 +9,32 @@ main {
     & > h1 {
       text-transform: uppercase;
     }
-    & > button {
-      padding: 0.25rem;
-      background: var(--accent-color);
-      color: var(--secondary-color);
+    & > .home_actions {
       display: flex;
       align-items: center;
       justify-content: center;
-      border: none;
-      outline: none;
-      border-radius: var(--border-radius);
+      gap: 1rem;
+      & > button {
+        padding: 0.25rem;
+        background: var(--accent-color);
+        color: var(--secondary-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        outline: none;
+        border-radius: var(--border-radius);
 
-      &:hover,
-      &:focus-visible {
-        outline: 1px solid var(--secondary-color);
-      }
+        &:hover,
+        &:focus-visible {
+          outline: 1px solid var(--secondary-color);
+        }
 
-      & > svg {
-        --size: 30px;
-        height: var(--size);
-        width: var(--size);
+        & > svg {
+          --size: 30px;
+          height: var(--size);
+          width: var(--size);
+        }
       }
     }
   }

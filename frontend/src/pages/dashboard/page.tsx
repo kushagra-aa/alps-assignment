@@ -1,5 +1,5 @@
 import "./style.css";
-import { AddIcon } from "../../components/Icons";
+import { AddIcon, RefreshIcon } from "../../components/Icons";
 import Table from "../../components/table/Table";
 import { LeaveRequestType } from "../../types/LeaveRequest";
 import ConfirmModal from "../../components/modals/ConfirmModal";
@@ -16,12 +16,6 @@ function Dashboard() {
   const [modalOpen, setModalOpen] = useState<ModalsEnum>("none");
   const [selectedRequest, setSelectedRequest] = useState<LeaveRequestType>();
 
-  const handleFormSubmit = async (
-    formData: OmitAType<LeaveRequestType, "ID">
-  ) => {
-    console.log("formData :>> ", formData);
-  };
-
   const handleModalOpen = (modalName: ModalsEnum) => {
     setModalOpen(modalName);
   };
@@ -36,6 +30,37 @@ function Dashboard() {
     const resp = await API.get("http://localhost:3000/api/v1/leaves");
     setLeaveRequests(resp.data.data);
   };
+  const refreshRequests = async () => {
+    await API.get("http://localhost:3000/api/v1/leaves/refresh");
+    await getRequests();
+  };
+
+  const handleDelete = async (id: string) => {
+    await API.del(`http://localhost:3000/api/v1/leaves/${id}`, {}).finally(
+      () => {
+        refreshRequests();
+      }
+    );
+  };
+  const handleAdd = async (body: LeaveRequestType) => {
+    await API.post(`http://localhost:3000/api/v1/leaves/`, body, {}).finally(
+      () => {
+        refreshRequests();
+      }
+    );
+  };
+  const handleEdit = async (
+    body: OmitAType<LeaveRequestType, "ID">,
+    id: string
+  ) => {
+    await API.patch(
+      `http://localhost:3000/api/v1/leaves/${id}`,
+      body,
+      {}
+    ).finally(() => {
+      refreshRequests();
+    });
+  };
 
   useEffect(() => {
     getRequests();
@@ -45,25 +70,37 @@ function Dashboard() {
     <main>
       {modalOpen === "add" ? (
         <AddModal
-          handleFormSubmit={handleFormSubmit}
+          handleFormSubmit={handleAdd}
           handleModalClose={handleModalClose}
         />
       ) : null}
       {modalOpen === "edit" ? (
         <EditModal
           selectedRequest={selectedRequest}
-          handleFormSubmit={handleFormSubmit}
+          handleFormSubmit={handleEdit}
           handleModalClose={handleModalClose}
         />
       ) : null}
       {modalOpen === "confirm" ? (
-        <ConfirmModal handleModalClose={handleModalClose} />
+        <ConfirmModal
+          handleDelete={handleDelete}
+          handleModalClose={handleModalClose}
+          selectedRequest={selectedRequest}
+        />
       ) : null}
       <div className="home">
         <h1>dashboard</h1>
-        <button title="Add New Request" onClick={() => handleModalOpen("add")}>
-          <AddIcon />
-        </button>
+        <div className="home_actions">
+          <button
+            title="Add New Request"
+            onClick={() => handleModalOpen("add")}
+          >
+            <AddIcon />
+          </button>
+          <button title="Refresh Request" onClick={() => refreshRequests()}>
+            <RefreshIcon />
+          </button>
+        </div>
       </div>
       <div className="table_container">
         <Table
