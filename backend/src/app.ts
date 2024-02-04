@@ -1,13 +1,6 @@
 import express from "express";
 import cors from "cors";
 
-declare global {
-  let zohoAccessToken: {
-    token: string;
-    createdAt: Date;
-  }; // Declare global variable
-}
-
 const app = express();
 
 app.use(cors({ origin: process.env.ALLOWED_ORIGIN }));
