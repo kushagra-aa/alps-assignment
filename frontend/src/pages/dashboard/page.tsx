@@ -2,6 +2,8 @@ import "./style.css";
 import { AddIcon } from "../../components/Icons";
 import Table from "../../components/table/table";
 import { LeaveRequestType } from "../../types/LeaveRequest";
+import ConfirmModal from "../../components/modals/ConfirmModal";
+import { useState } from "react";
 
 const data: LeaveRequestType[] = [
   {
@@ -90,17 +92,37 @@ const data: LeaveRequestType[] = [
   },
 ];
 
+export type ModalsEnum = "confirm" | "add" | "edit" | "none";
+
 function Dashboard() {
+  const [modalOpen, setModalOpen] = useState<ModalsEnum>("none");
+
+  const handleModalOpen = (modalName: ModalsEnum) => {
+    setModalOpen(modalName);
+  };
+  const handleModalClose = () => {
+    setModalOpen("none");
+  };
+
   return (
     <main>
+      {modalOpen === "add" ? (
+        <ConfirmModal handleModalClose={handleModalClose} />
+      ) : null}
+      {modalOpen === "edit" ? (
+        <ConfirmModal handleModalClose={handleModalClose} />
+      ) : null}
+      {modalOpen === "confirm" ? (
+        <ConfirmModal handleModalClose={handleModalClose} />
+      ) : null}
       <div className="home">
         <h1>dashboard</h1>
-        <button title="Add New Request">
+        <button title="Add New Request" onClick={() => handleModalOpen("add")}>
           <AddIcon />
         </button>
       </div>
       <div className="table_container">
-        <Table data={data} />
+        <Table data={data} handleModalOpen={handleModalOpen} />
       </div>
     </main>
   );

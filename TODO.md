@@ -39,7 +39,7 @@
   - [] Modal(s)
     - [] Add
     - [] Edit
-    - [] Delete Confirm
+    - [X] Delete Confirm
 - [] From Handlers
   - [] Add
   - [] Edit

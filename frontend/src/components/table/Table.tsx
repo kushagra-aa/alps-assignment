@@ -1,8 +1,15 @@
 import "./table.css";
 import { LeaveRequestType } from "../../types/LeaveRequest";
 import { DeleteIcon, EditIcon } from "../Icons";
+import { ModalsEnum } from "../../pages/dashboard/page";
 
-function Table({ data }: { data: LeaveRequestType[] }) {
+function Table({
+  data,
+  handleModalOpen,
+}: {
+  data: LeaveRequestType[];
+  handleModalOpen: (modalName: ModalsEnum) => void;
+}) {
   return (
     <table>
       <thead>
@@ -61,12 +68,12 @@ function Table({ data }: { data: LeaveRequestType[] }) {
             <td className="med">{d.Gross_Premium}</td>
             <td className="big">{d.Reason}</td>
             <td className="small">
-              <button>
+              <button onClick={() => handleModalOpen("edit")}>
                 <EditIcon />
               </button>
             </td>
             <td className="small">
-              <button>
+              <button onClick={() => handleModalOpen("confirm")}>
                 <DeleteIcon />
               </button>
             </td>
