@@ -51,12 +51,10 @@
 
 ### Additional
 
-- [] Data Validation in Add-Edit API
-  - [] Undefined
-  - [] Insurance_Type
-  - [] Department
-  - [] Type_of_Leave
-  - [] Insurance_Company
 - [X] Process The Data
   - [X] undefined fields = "Not found"
-- [] Cluster The Data
+- [X] Cluster The Data
+  - [X] Insurance_Type
+  - [X] Department
+  - [X] Type_of_Leave
+  - [X] Insurance_Company

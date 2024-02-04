@@ -6,6 +6,7 @@ const writeToJSONFile = async (data, filename = "./data.json") => {
     const formattedData = JSON.stringify(data, null, 2);
     await fs.writeFile(filename, formattedData); // Use fs.promises.writeFile
   } catch (error) {
+    console.log("error :>> ", error);
     throw new ApiError(500, error?.message || "Something Went Wrong");
   }
 };

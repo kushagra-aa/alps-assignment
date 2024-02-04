@@ -11,12 +11,39 @@ import editLeaveRequests, {
 import deleteLeaveRequests from "../helpers/apiHelpers/leaveRequests/deleteLeaveRequest.js";
 import { formatDate } from "../helpers/dateTime.js";
 import fillMissingFields from "../helpers/fillMissingFields.js";
+import clusterByInsuranceType from "../helpers/clusteringHelpers/clusterByInsuranceType.js";
+import clusterByDepartment from "../helpers/clusteringHelpers/clusterByDepartment.js";
+import clusterByTypeOfLeave from "../helpers/clusteringHelpers/clusterByTypeOfLeave.js";
+import clusterByInsuranceCompany from "../helpers/clusteringHelpers/clusterByInsuranceCompany.js";
 
 const refreshLeaveApplications = asyncHandler(async (req, res) => {
   let zohoAccessToken = await readJSONFile("./zohoToken.json");
   const data = await getLeaveRequests(zohoAccessToken.token);
 
-  await writeToJSONFile(fillMissingFields(data), "./data.json");
+  console.log("Point1 :>> ");
+  const fixedData = fillMissingFields(data);
+  const clusteredByDepartment = clusterByDepartment(fixedData);
+  const clusteredByInsuranceType = clusterByInsuranceType(fixedData);
+  const clusteredByTypeOfLeave = clusterByTypeOfLeave(fixedData);
+  const clusteredByInsuranceCompany = clusterByInsuranceCompany(fixedData);
+
+  await writeToJSONFile(fixedData, "./data.json");
+  await writeToJSONFile(
+    clusteredByDepartment,
+    "./clusteredData/clusteredByDepartment.json"
+  );
+  await writeToJSONFile(
+    clusteredByInsuranceType,
+    "./clusteredData/clusteredByInsuranceType.json"
+  );
+  await writeToJSONFile(
+    clusteredByInsuranceCompany,
+    "./clusteredData/clusteredByInsuranceCompany.json"
+  );
+  await writeToJSONFile(
+    clusteredByTypeOfLeave,
+    "./clusteredData/clusteredByTypeOfLeave.json"
+  );
 
   return res
     .status(200)
