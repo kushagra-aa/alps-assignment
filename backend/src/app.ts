@@ -3,7 +3,7 @@ import cors from "cors";
 
 const app = express();
 
-app.use(cors({ origin: process.env.ALLOWED_ORIGIN }));
+app.use(cors({ origin: process.env.ALLOWED_ORIGIN || "*" }));
 
 // Change Size if needed
 app.use(express.json({ limit: "20kb" }));

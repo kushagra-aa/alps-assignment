@@ -40,11 +40,11 @@
     - [X] Add
     - [X] Edit
     - [X] Delete Confirm
-- [] From Handlers
-  - [] Add
-  - [] Edit
+- [X] From Handlers
+  - [X] Add
+  - [X] Edit
 - [] API Handlers
-  - [] Get
+  - [X] Get
   - [] Add
   - [] Edit
   - [] Delete

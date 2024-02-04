@@ -7,6 +7,7 @@ type AvailableMethodsType = "GET" | "POST" | "PATCH" | "DELETE";
 const config: CreateAxiosDefaults = {
   headers: {
     "Content-Type": "application/json",
+    Authorization: `myAuth ${import.meta.env.VITE_ACCESS_TOKEN}`,
   },
 };
 
