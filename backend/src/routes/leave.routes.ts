@@ -14,7 +14,9 @@ router.route("/refresh").get(zohoAuthMiddleware, refreshLeaveApplications);
 router
   .route("/")
   .get(getLeaveApplications)
-  .post(zohoAuthMiddleware, addNewLeaveApplication)
+  .post(zohoAuthMiddleware, addNewLeaveApplication);
+router
+  .route("/:id")
   .patch(zohoAuthMiddleware, editLeaveApplication)
   .delete(zohoAuthMiddleware, removeLeaveApplication);
 

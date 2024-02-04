@@ -32,11 +32,7 @@ export default async function editLeaveRequests(
       reqOptions.headers
     );
 
-    if (data.status === 200) {
-      return (data.data as EditResponseType).data;
-    } else {
-      throw new Error(`Records API Error: ${data.statusText}`);
-    }
+    return (data.data as EditResponseType).data || data.data;
   } catch (e) {
     console.log("Something Went Wrong :>> ", e);
   }

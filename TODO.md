@@ -27,7 +27,7 @@
     - [] Save in json
   - [X] Get
   - [X] Add: Add-> Refresh Data From Zoho
-  - [] Edit: Edit-> Refresh Data From Zoho
+  - [X] Edit: Edit-> Refresh Data From Zoho
   - [] Delete: Delete-> Refresh Data From Zoho
 - [] Additional Logic
   - [] Add AuthToken for API calls

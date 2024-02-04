@@ -31,8 +31,6 @@ export default async function addLeaveRequests(
       reqOptions.headers
     );
 
-    console.log("data :>> ", data);
-
     return (data.data as AddResponseType).data || data.data;
   } catch (e) {
     console.log("Something Went Wrong :>> ", e);
