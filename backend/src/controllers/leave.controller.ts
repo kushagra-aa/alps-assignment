@@ -10,12 +10,13 @@ import editLeaveRequests, {
 } from "../helpers/apiHelpers/leaveRequests/editLeaveRequest.js";
 import deleteLeaveRequests from "../helpers/apiHelpers/leaveRequests/deleteLeaveRequest.js";
 import { formatDate } from "../helpers/dateTime.js";
+import fillMissingFields from "../helpers/fillMissingFields.js";
 
 const refreshLeaveApplications = asyncHandler(async (req, res) => {
   let zohoAccessToken = await readJSONFile("./zohoToken.json");
   const data = await getLeaveRequests(zohoAccessToken.token);
 
-  await writeToJSONFile(data, "./data.json");
+  await writeToJSONFile(fillMissingFields(data), "./data.json");
 
   return res
     .status(200)
