@@ -13,9 +13,11 @@ app.use(express.urlencoded({ extended: false }));
 
 // Routes Imports
 import leaveRouter from "./routes/leave.routes.js";
+import optionsRouter from "./routes/options.routes.js";
 import clientAuthMiddleware from "./middleware/clientAuth.middleware.js";
 
 // Routes Declarations
 app.use("/api/v1/leaves", clientAuthMiddleware, leaveRouter);
+app.use("/api/v1/options", clientAuthMiddleware, optionsRouter);
 
 export { app };
