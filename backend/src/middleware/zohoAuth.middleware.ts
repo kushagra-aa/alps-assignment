@@ -12,8 +12,12 @@ const zohoAuthMiddleware = async (_, __, next: NextFunction) => {
     const then = new Date(zohoAccessToken.createdAt);
     const tokenAge = now.getTime() - then.getTime();
     console.log("tokenAge :>> ", tokenAge);
-    if (tokenAge >= 3600000) {
-      // Token is expired (older than 3600 seconds)
+    if (
+      tokenAge >= 3600000 ||
+      !zohoAccessToken?.token ||
+      zohoAccessToken.token === ""
+    ) {
+      // Token is expired (older than 3600 seconds) or not present
       const newToken = await getAccessToken(); // Assuming you have a function to fetch a new token
       console.log("newToken :>> ", newToken);
       zohoAccessToken = {

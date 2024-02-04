@@ -5,7 +5,6 @@ import getLeaveRequests from "../helpers/apiHelpers/leaveRequests/getLeaveReques
 import { readJSONFile, writeToJSONFile } from "../helpers/jsonHelpers.js";
 
 const refreshLeaveApplications = asyncHandler(async (req, res) => {
-  // if(error) {  throw new ApiError(400, "Something Went Wrong?")}
   let zohoAccessToken = await readJSONFile("./zohoToken.json");
   const data = await getLeaveRequests(zohoAccessToken.token);
 
@@ -22,10 +21,11 @@ const refreshLeaveApplications = asyncHandler(async (req, res) => {
     );
 });
 const getLeaveApplications = asyncHandler(async (req, res) => {
-  // if(error) {  throw new ApiError(400, "Something Went Wrong?")}
+  let data = await readJSONFile("./data.json");
+
   return res
     .status(200)
-    .json(new ApiResponse(200, [], "Leave Applications found successfully"));
+    .json(new ApiResponse(200, data, "Leave Applications found successfully"));
 });
 const addNewLeaveApplication = asyncHandler(async (req, res) => {
   // if(error) {  throw new ApiError(400, "Something Went Wrong?")}
