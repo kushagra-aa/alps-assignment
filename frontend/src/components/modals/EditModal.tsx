@@ -1,9 +1,10 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Modal from "./Modal";
 import "./modal.css";
 import { LeaveRequestType } from "../../types/LeaveRequest";
 import { OmitAType } from "../../types/utilityTypes";
 import addClassToInput from "../../helpers/addClassToElm";
+import API from "../../lib/api";
 
 type OptionsType = {
   insuranceType: string[];
@@ -12,7 +13,7 @@ type OptionsType = {
   insuranceCompany: string[];
 };
 
-const options: OptionsType = {
+const optionsDefault: OptionsType = {
   insuranceType: ["Health", "Motor", "Travel", "Fire", "Cyber"],
   department: ["Sales", "Marketing", "Operations", "Finance", "Packaging"],
   typeOfLeave: ["Sick Leave", "Casual Leave", "Public Holiday"],
@@ -38,6 +39,7 @@ function EditModal({
     id: string
   ): void;
 }) {
+  const [options, setOptions] = useState(optionsDefault);
   const formRef = useRef<HTMLFormElement>(null!);
 
   const validateForm = (form: HTMLFormElement) => {
@@ -89,6 +91,15 @@ function EditModal({
     handleFormSubmit(formData, selectedRequest.ID);
     handleModalClose();
   };
+
+  const getRequests = async () => {
+    const resp = await API.get("http://localhost:3000/api/v1/options");
+    setOptions(resp.data.data);
+  };
+
+  useEffect(() => {
+    getRequests();
+  }, []);
 
   if (!selectedRequest)
     return (
