@@ -10,11 +10,16 @@
 
 ### BackEnd
 
-- [] Integrate Zoho
+- [X] Integrate Zoho
   - [X] Get
   - [X] Add
   - [X] Edit
   - [X] Delete
+- [X] Setup Express.js
+  - [X] Handlers
+  - [X] Routes
+  - [X] Controllers
+  - [] Middlewares
 - [] Make Endpoint(s)
   - [] Refresh Data From Zoho
     - [] Process The Data
