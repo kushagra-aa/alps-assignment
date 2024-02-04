@@ -35,7 +35,7 @@
 ### FrontEnd
 
 - [] Make UI
-  - [] Table
+  - [X] Table
   - [] Modal(s)
     - [] Add
     - [] Edit

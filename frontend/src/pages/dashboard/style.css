@@ -1,0 +1,38 @@
+main {
+  & > .home {
+    padding: 0.5rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--accent-color);
+
+    & > h1 {
+      text-transform: uppercase;
+    }
+    & > button {
+      padding: 0.25rem;
+      background: var(--accent-color);
+      color: var(--secondary-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      outline: none;
+      border-radius: var(--border-radius);
+
+      &:hover,
+      &:focus-visible {
+        outline: 1px solid var(--secondary-color);
+      }
+
+      & > svg {
+        --size: 30px;
+        height: var(--size);
+        width: var(--size);
+      }
+    }
+  }
+  & > .table_container {
+    overflow: scroll;
+  }
+}

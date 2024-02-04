@@ -1,21 +1,30 @@
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 :root {
+  --bg-color: #242424;
+  --bg-color-2: rgb(27, 27, 27);
+  --fg-color: rgba(233, 233, 233, 0.993);
+  --accent-color: #646cff;
+  --secondary-color: #e4e4ff;
+  --border-radius: 10px;
+
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  color: var(--fg-color);
+  background-color: var(--bg-color);
 }
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: var(--accent-color);
   text-decoration: inherit;
 }
 a:hover {
@@ -28,10 +37,8 @@ body {
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
+    --bg-color: rgba(233, 233, 233, 0.993);
+    --bg-color-2: rgba(211, 211, 211, 0.993);
+    --fg-color: #242424;
   }
 }
