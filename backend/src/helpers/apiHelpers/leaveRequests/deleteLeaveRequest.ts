@@ -20,11 +20,7 @@ export default async function deleteLeaveRequests(token: string, id: string) {
 
     const data = await API.del(reqOptions.url, reqOptions.headers);
 
-    if (data.status === 200) {
-      return (data.data as DeleteResponseType).data;
-    } else {
-      throw new Error(`Records API Error: ${data.statusText}`);
-    }
+    return (data.data as DeleteResponseType).data || data.data;
   } catch (e) {
     console.log("Something Went Wrong :>> ", e);
   }

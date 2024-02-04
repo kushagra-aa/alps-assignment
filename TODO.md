@@ -20,19 +20,19 @@
   - [X] Routes
   - [X] Controllers
   - [X] Middlewares
-- [] Make Endpoint(s)
+- [X] Make Endpoint(s)
   - [X] Refresh Data From Zoho
     - [] Process The Data
     - [] Cluster The Data
-    - [] Save in json
+    - [X] Save in json
   - [X] Get
   - [X] Add: Add-> Refresh Data From Zoho
   - [X] Edit: Edit-> Refresh Data From Zoho
-  - [] Delete: Delete-> Refresh Data From Zoho
-- [] Additional Logic
-  - [] Add AuthToken for API calls
-  - [] Save Token
-  - [] Token Refresh Logic
+  - [X] Delete: Delete-> Refresh Data From Zoho
+- [X] Additional Logic
+  - [X] Add AuthToken for API calls
+  - [X] Save Token
+  - [X] Token Refresh Logic
 
 ### FrontEnd
 

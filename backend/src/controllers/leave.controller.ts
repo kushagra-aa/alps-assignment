@@ -1,5 +1,4 @@
 import asyncHandler from "../helpers/asyncHandler.js";
-import ApiError from "../helpers/apiError.js";
 import ApiResponse from "../helpers/apiResponse.js";
 import getLeaveRequests from "../helpers/apiHelpers/leaveRequests/getLeaveRequests.js";
 import { readJSONFile, writeToJSONFile } from "../helpers/jsonHelpers.js";
@@ -83,9 +82,7 @@ const removeLeaveApplication = asyncHandler(async (req, res) => {
   const resp = await deleteLeaveRequests(zohoAccessToken.token, id);
   return res
     .status(200)
-    .json(
-      new ApiResponse(200, resp, "Leave Applications Removed successfully")
-    );
+    .json(new ApiResponse(200, resp, "Leave Applications found successfully"));
 });
 
 export {

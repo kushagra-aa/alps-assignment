@@ -27,7 +27,6 @@ Showcase skills in API calls, data handling, data clustering, and admin panel cr
 - Develop a web interface with CRUD (Create, Read, Update, Delete) functionalities for managing the clustered data.
 - Users should be able to:
   - View all clustered data.
-  - Search and filter data based on different criteria.
   - Add new data entries.
   - Edit existing data entries.
   - Delete data entries.
