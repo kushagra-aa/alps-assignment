@@ -23,7 +23,6 @@
     padding: 0.5rem;
     background: var(--bg-color);
     z-index: 2;
-    transform: translate(-50%, -50%);
     border: 1px solid var(--accent-color);
     border-radius: calc(var(--border-radius) - 5px);
 
@@ -68,6 +67,79 @@
         &.close_action {
           background: var(--secondary-color);
           color: var(--accent-color);
+        }
+      }
+    }
+  }
+}
+
+.form_modal {
+  & > form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0.75rem;
+
+    & > label {
+      padding: 0.12rem 0.15rem;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5rem;
+      width: 100%;
+      position: relative;
+
+      &:hover {
+        color: var(--accent-color);
+      }
+      &:focus-within {
+        color: var(--accent-color);
+      }
+
+      & > span {
+        padding-left: 0.5rem;
+      }
+
+      & > :is(input, select) {
+        margin-right: 0.5rem;
+        padding: 0.15rem 0.5rem;
+        background: none;
+        outline: none;
+        border: 1px solid var(--bg-color-2);
+        border-radius: calc(var(--border-radius) - 3px);
+        max-width: 100%;
+
+        &:focus {
+          outline: 1px solid var(--accent-color);
+        }
+      }
+      & > select:focus {
+        /* Customize focus style for select elements, if desired */
+        background: var(--bg-color-2); /* Adjust as needed */
+      }
+      &:has(:is(input, select):required) {
+        &::before {
+          content: "*";
+          color: rgb(255, 30, 0);
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+      }
+      &:has(:is(input, select).error) {
+        background: rgba(255, 30, 0, 0.08);
+
+        &::after {
+          content: "!";
+          color: rgb(255, 30, 0);
+          font-size: 1rem;
+          position: absolute;
+          top: 0;
+          right: 0.25rem;
+          height: inherit;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
       }
     }
