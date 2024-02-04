@@ -1,9 +1,20 @@
 import { Router } from "express";
-import { getLeaveApplications } from "../controllers/leave.controller.js";
-import clientAuthMiddleware from "../middleware/clientAuth.middleware.js";
+import {
+  refreshLeaveApplications,
+  getLeaveApplications,
+  addNewLeaveApplication,
+  editLeaveApplication,
+  removeLeaveApplication,
+} from "../controllers/leave.controller.js";
 
 const router = Router();
 
-router.route("/").get(clientAuthMiddleware, getLeaveApplications);
+router.route("/refresh").get(refreshLeaveApplications);
+router
+  .route("/")
+  .get(getLeaveApplications)
+  .post(addNewLeaveApplication)
+  .patch(editLeaveApplication)
+  .delete(removeLeaveApplication);
 
 export default router;

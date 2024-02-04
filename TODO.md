@@ -19,7 +19,7 @@
   - [X] Handlers
   - [X] Routes
   - [X] Controllers
-  - [] Middlewares
+  - [X] Middlewares
 - [] Make Endpoint(s)
   - [] Refresh Data From Zoho
     - [] Process The Data
