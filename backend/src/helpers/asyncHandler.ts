@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from "express";
+import ApiResponse from "./apiResponse.js";
 
 const asyncHandler =
   <T extends (req: Request, res: Response, next: NextFunction) => void>(
@@ -8,7 +9,7 @@ const asyncHandler =
     try {
       await requestHandler(req, res, next);
     } catch (error) {
-      next(error);
+      res.status(500).json(error);
     }
   };
 

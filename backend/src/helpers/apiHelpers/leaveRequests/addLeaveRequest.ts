@@ -31,11 +31,9 @@ export default async function addLeaveRequests(
       reqOptions.headers
     );
 
-    if (data.status === 200) {
-      return (data.data as AddResponseType).data;
-    } else {
-      throw new Error(`Records API Error: ${data.statusText}`);
-    }
+    console.log("data :>> ", data);
+
+    return (data.data as AddResponseType).data || data.data;
   } catch (e) {
     console.log("Something Went Wrong :>> ", e);
   }

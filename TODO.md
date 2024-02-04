@@ -21,12 +21,12 @@
   - [X] Controllers
   - [X] Middlewares
 - [] Make Endpoint(s)
-  - [] Refresh Data From Zoho
+  - [X] Refresh Data From Zoho
     - [] Process The Data
     - [] Cluster The Data
     - [] Save in json
-  - [] Get
-  - [] Add: Add-> Refresh Data From Zoho
+  - [X] Get
+  - [X] Add: Add-> Refresh Data From Zoho
   - [] Edit: Edit-> Refresh Data From Zoho
   - [] Delete: Delete-> Refresh Data From Zoho
 - [] Additional Logic

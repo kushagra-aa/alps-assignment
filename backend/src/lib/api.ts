@@ -57,7 +57,6 @@ const apiRequest = (
     default:
       throw new Error(`Invalid HTTP method: ${method}`);
   }
-
   // Return axios promise with enhanced error handling
   return axiosAPI({
     url,
